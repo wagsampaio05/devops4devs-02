@@ -32,7 +32,10 @@ jobs:
       -  name: Checkout do código fonte 
          uses: actions/checkout@v4.1.7
       -  name: Conectando na Cloud 
-      
+         uses:  aws-action/configure-aws-credential@v4
+         with:
+           role-to-assume: arn:aws:iam::759266012741:role/GitHub-OIDC
+           aws-region:  us-east-1
       
       -  name: Configuração do Kubeconfig   
          run: aws eks update-kubeconfig --name eks-teste-wagner
